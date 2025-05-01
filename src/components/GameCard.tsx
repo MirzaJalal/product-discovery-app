@@ -11,7 +11,7 @@ interface GameCardProps {
 // No logic is present in this component, it is purely presentational
 const GameCard = ({ game }: GameCardProps) => {
   return (
-    <Card.Root width={300} padding={2} overflow="hidden" margin={3}>
+    <Card.Root>
       <Image src={game.background_image} alt={game.name} />
       <Card.Body gap="2">
         <Card.Title>
