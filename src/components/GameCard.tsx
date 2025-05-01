@@ -1,11 +1,14 @@
 import { Game } from "./hooks/useGames";
-import { Card, Image, Text, Button, Heading } from "@chakra-ui/react";
+import { Card, Image, Text, Button, Heading, HStack } from "@chakra-ui/react";
 import PlatformIconList from "./platformIconList";
+import CriticScore from "./CriticScore";
 
 interface GameCardProps {
   game: Game;
 }
 
+// GameCard component to display game information
+// No logic is present in this component, it is purely presentational
 const GameCard = ({ game }: GameCardProps) => {
   return (
     <Card.Root padding={2} overflow="hidden" margin={3}>
@@ -22,11 +25,14 @@ const GameCard = ({ game }: GameCardProps) => {
         <Text textStyle="2xl" fontWeight="medium" letterSpacing="tight" mt="2">
           $450
         </Text>
-        <Text fontSize="sm" color="gray.500" mt="1">
-          <PlatformIconList
-            platform={game.parent_platforms.map(({ platform }) => platform)}
-          />
-        </Text>
+        <HStack justifyContent={"space-between"} mt="2">
+          <Text fontSize="sm" color="gray.500" mt="1">
+            <PlatformIconList
+              platform={game.parent_platforms.map(({ platform }) => platform)}
+            />
+          </Text>
+          <CriticScore metacriticScore={game.metacritic} />
+        </HStack>
       </Card.Body>
       <Card.Footer gap="2">
         <Button variant="solid">Buy now</Button>
