@@ -1,5 +1,9 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import Navbar from "./components/ui/Navbar";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Game } from "./components/services/rawg-service";
+import GameGrid from "./components/GameGrid";
 
 function App() {
   return (
@@ -20,6 +24,8 @@ function App() {
           Main
         </GridItem>
       </Grid>
+
+      <GameGrid />
     </>
   );
 }
