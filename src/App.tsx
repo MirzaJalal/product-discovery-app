@@ -1,24 +1,34 @@
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
 import Navbar from "./components/ui/Navbar";
+import GenreList from "./components/GenreList";
 import GameGrid from "./components/GameGrid";
 
 function App() {
+  const showAside = useBreakpointValue({ base: false, lg: true });
+
   return (
     <>
       <Navbar />
       <Grid
         templateAreas={{
-          base: `"nav" "main"`,
-          lg: `"nav nav" "aside main"`,
+          base: `"main"`,
+          lg: `"aside main"`,
         }}
+        templateColumns={{
+          base: "1fr",
+          lg: "250px 1fr",
+        }}
+        gap={4}
+        p={4}
       >
-        {/* <Show above="lg"> */}
-        <GridItem area="aside" bg="gold">
-          Aside
+        {showAside && (
+          <GridItem area="aside" padding="2" borderRadius="md">
+            <GenreList />
+          </GridItem>
+        )}
+        <GridItem area="main" padding="2" borderRadius="md">
+          <GameGrid />
         </GridItem>
-        {/* </Show> */}
-        <GridItem area="main" bg="dodgerblue"></GridItem>
-        <GameGrid />
       </Grid>
     </>
   );
