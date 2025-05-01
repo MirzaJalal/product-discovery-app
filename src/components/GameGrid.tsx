@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Game } from "./services/rawg-service";
 import apiClient from "./services/api-client";
+import { Text } from "@chakra-ui/react";
 
 interface FetchGamesResponse {
   count: number;
@@ -23,17 +24,20 @@ const GameGrid = () => {
   }, []);
 
   return (
-    <ul>
-      {games &&
-        games.map((game) => (
-          <li key={game.id}>
-            <h2>{game.name}</h2>
-            <img src={game.background_image} alt={game.name} />
-            <p>Rating: {game.rating}</p>
-            <p>Released: {game.released}</p>
-          </li>
-        ))}
-    </ul>
+    <>
+      {error && <Text color="red.500">{error}</Text>}
+      <ul>
+        {games &&
+          games.map((game) => (
+            <li key={game.id}>
+              <h2>{game.name}</h2>
+              <img src={game.background_image} alt={game.name} />
+              <p>Rating: {game.rating}</p>
+              <p>Released: {game.released}</p>
+            </li>
+          ))}
+      </ul>
+    </>
   );
 };
 
