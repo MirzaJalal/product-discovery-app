@@ -1,14 +1,11 @@
 import { Game } from "./hooks/useGames";
 import { Genre } from "./hooks/useGenres";
 import useData from "./hooks/useData";
-import { ListItem, Image, HStack, List, Text } from "@chakra-ui/react";
-
-interface GenreListProps {
-  game: Game;
-}
+import { Image, HStack, List, Text, Spinner } from "@chakra-ui/react";
 
 const GenreList = () => {
-  const { data } = useData<Genre>("/genres");
+  const { data, loading } = useData<Genre>("/genres");
+  if (loading) return <Spinner />;
   return (
     <List.Root>
       {data.map((genre) => (
