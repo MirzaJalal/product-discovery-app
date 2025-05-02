@@ -1,14 +1,12 @@
-import { Game } from "./hooks/useGames";
 import useGenres, { Genre } from "./hooks/useGenres";
-import useData from "./hooks/useData";
 import { Image, HStack, List, Text, Spinner, Button } from "@chakra-ui/react";
-import { link } from "framer-motion/client";
 
 interface GenreListProps {
   chosenGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ chosenGenre }: GenreListProps) => {
+const GenreList = ({ chosenGenre, selectedGenre }: GenreListProps) => {
   const { data, loading } = useGenres();
 
   if (loading) return <Spinner />;
@@ -22,7 +20,15 @@ const GenreList = ({ chosenGenre }: GenreListProps) => {
               borderRadius={8}
               src={genre.image_background}
             ></Image>
-            <Button variant="ghost" onClick={() => chosenGenre(genre)}>
+            <Button
+              fontStyle={selectedGenre?.id == genre.id ? "italic" : "normal"}
+              fontVariant={
+                selectedGenre?.id == genre.id ? "small-caps" : "normal"
+              }
+              fontWeight={selectedGenre?.id == genre.id ? "bold" : "normal"}
+              variant="ghost"
+              onClick={() => chosenGenre(genre)}
+            >
               <Text fontSize="lg">{genre.name}</Text>
             </Button>
           </HStack>
