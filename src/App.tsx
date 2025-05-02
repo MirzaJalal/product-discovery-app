@@ -22,7 +22,7 @@ function App() {
         p={4}
       >
         {showAside && (
-          <GridItem area="aside" padding="2" borderRadius="md">
+          <GridItem area="aside" paddingX={5} borderRadius="md">
             <GenreList />
           </GridItem>
         )}
