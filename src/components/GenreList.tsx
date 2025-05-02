@@ -1,17 +1,17 @@
-import { Badge } from "@chakra-ui/react";
 import { Game } from "./hooks/useGames";
-import useGenres from "./hooks/useGenres";
+import { Genre } from "./hooks/useGenres";
+import useData from "./hooks/useData";
 
 interface GenreListProps {
   game: Game;
 }
 
 const GenreList = () => {
-  const { genres } = useGenres();
+  const { data } = useData<Genre>("/genres");
   return (
     <>
       <ul>
-        {genres.map((genre) => (
+        {data.map((genre) => (
           <li key={genre.id}>{genre.name}</li>
         ))}
       </ul>
