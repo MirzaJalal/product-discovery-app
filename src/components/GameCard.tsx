@@ -2,6 +2,7 @@ import { Game } from "./hooks/useGames";
 import { Card, Image, Text, Button, Heading, HStack } from "@chakra-ui/react";
 import PlatformIconList from "./platformIconList";
 import CriticScore from "./CriticScore";
+import noImage from "../assets/no-image-placeholder-6f3882e0.webp";
 
 interface GameCardProps {
   game: Game;
@@ -10,9 +11,10 @@ interface GameCardProps {
 // GameCard component to display game information
 // No logic is present in this component, it is purely presentational
 const GameCard = ({ game }: GameCardProps) => {
+  const imageSource = game.background_image ? game.background_image : noImage;
   return (
     <Card.Root>
-      <Image src={game.background_image} alt={game.name} />
+      <Image src={imageSource} alt={game.name} />
       <Card.Body gap="2">
         <Card.Title>
           <Heading>{game.name}</Heading>
