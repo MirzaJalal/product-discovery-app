@@ -5,12 +5,14 @@ import GameGrid from "./components/GameGrid";
 import { useState } from "react";
 import { Genre } from "./components/hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
+import { Platforms } from "./components/hooks/usePlatforms";
 
 function App() {
   const showAside = useBreakpointValue({ base: false, lg: true });
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-
-  console.log("selectedGenre: ", selectedGenre);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platforms | null>(
+    null
+  );
 
   return (
     <>
@@ -36,8 +38,14 @@ function App() {
           </GridItem>
         )}
         <GridItem area="main" padding="2" borderRadius="md">
-          <PlatformSelector />
-          <GameGrid selectedGenre={selectedGenre} />
+          <PlatformSelector
+            chosenPlatform={(platform) => setSelectedPlatform(platform)}
+            selectedPlatform={selectedPlatform}
+          />
+          <GameGrid
+            selectedGenre={selectedGenre}
+            selectedPlatform={selectedPlatform}
+          />
         </GridItem>
       </Grid>
     </>
