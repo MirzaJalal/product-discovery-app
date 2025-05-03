@@ -1,5 +1,13 @@
 import useGenres, { Genre } from "./hooks/useGenres";
-import { Image, HStack, List, Text, Spinner, Button } from "@chakra-ui/react";
+import {
+  Image,
+  HStack,
+  List,
+  Text,
+  Spinner,
+  Button,
+  Heading,
+} from "@chakra-ui/react";
 
 interface GenreListProps {
   chosenGenre: (genre: Genre) => void;
@@ -12,6 +20,9 @@ const GenreList = ({ chosenGenre, selectedGenre }: GenreListProps) => {
   if (loading) return <Spinner />;
   return (
     <List.Root>
+      <Heading fontSize={25} marginBottom={3}>
+        Genre
+      </Heading>
       {data.map((genre: any) => (
         <List.Item key={genre.id} paddingY="5px" listStyleType="none">
           <HStack>
