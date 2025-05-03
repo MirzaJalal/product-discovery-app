@@ -2,11 +2,15 @@ import { Button, Menu, Portal } from "@chakra-ui/react";
 
 interface SortSelectorProps {
   onSelectSortOrder: (sortOrder: string) => void;
+  chosenOrder: string;
 }
 
-const SortSelector = ({ onSelectSortOrder }: SortSelectorProps) => {
+const SortSelector = ({
+  onSelectSortOrder,
+  chosenOrder,
+}: SortSelectorProps) => {
   const sortingOptions = [
-    { value: "", label: "Relevance" },
+    { value: "", label: "None" },
     { value: "-added", label: "Date added" },
     { value: "-name", label: "Name" },
     { value: "-released", label: "Release date" },
@@ -18,7 +22,11 @@ const SortSelector = ({ onSelectSortOrder }: SortSelectorProps) => {
     <Menu.Root>
       <Menu.Trigger asChild>
         <Button size="sm" variant="outline">
-          Order By Relevance
+          {chosenOrder
+            ? "Order By: " +
+              sortingOptions.find((option) => option.value === chosenOrder)
+                ?.label
+            : "Order By"}
         </Button>
       </Menu.Trigger>
       <Portal>
