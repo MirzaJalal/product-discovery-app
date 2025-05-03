@@ -6,6 +6,10 @@ interface gameHeadingProps {
 }
 
 const GameHeading = ({ gameQuery }: gameHeadingProps) => {
+  if (!gameQuery.genre && !gameQuery.platform && !gameQuery.typedSearchText) {
+    return null;
+  }
+
   return (
     <>
       <div>
