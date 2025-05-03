@@ -18,6 +18,7 @@ const GenreList = ({ chosenGenre, selectedGenre }: GenreListProps) => {
   const { data, loading } = useGenres();
 
   if (loading) return <Spinner />;
+
   return (
     <List.Root>
       <Heading fontSize={25} marginBottom={3}>

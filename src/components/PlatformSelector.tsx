@@ -1,16 +1,16 @@
 import { Button, Menu, Portal } from "@chakra-ui/react";
-import usePlatforms, { Platforms } from "./hooks/usePlatforms";
+import usePlatforms, { Platform } from "./hooks/usePlatforms";
 
 interface PlatformSelectorProps {
-  chosenPlatform: (platform: Platforms) => void;
-  selectedPlatform: Platforms | null;
+  chosenPlatform: (platform: Platform) => void;
+  selectedPlatform: Platform | null;
 }
 
 const PlatformSelector = ({
   chosenPlatform,
   selectedPlatform,
 }: PlatformSelectorProps) => {
-  const { data, error } = usePlatforms(null);
+  const { data, error } = usePlatforms();
 
   if (error) return null;
 

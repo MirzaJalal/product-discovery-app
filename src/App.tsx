@@ -5,13 +5,13 @@ import GameGrid from "./components/GameGrid";
 import { useState } from "react";
 import { Genre } from "./components/hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
-import { Platforms } from "./components/hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import { Platform } from "./components/hooks/useGames";
 
 export interface GameQuery {
   genre: Genre | null;
-  platform: Platforms | null;
+  platform: Platform | null;
   sortOrder: string;
   typedSearchText: string | null;
 }
