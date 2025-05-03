@@ -12,6 +12,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platforms | null;
   sortOrder: string;
+  typedSearchText: string | null;
 }
 
 function App() {
@@ -21,7 +22,11 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar
+        onSearch={(typedSearchText) =>
+          setGameQuery({ ...gameQuery, typedSearchText })
+        }
+      />
       <Grid
         templateAreas={{
           base: `"main"`,

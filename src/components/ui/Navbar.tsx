@@ -3,7 +3,11 @@ import logo from "../../assets/logo.webp";
 import { ColorModeButton } from "@/components/ui/color-mode";
 import SearchInput from "../searchInput";
 
-const Navbar = () => {
+interface NavbarProps {
+  onSearch: (text: string) => void;
+}
+
+const Navbar = ({ onSearch }: NavbarProps) => {
   return (
     <HStack>
       <Image src={logo} alt="Logo" boxSize="50px" />
@@ -12,7 +16,7 @@ const Navbar = () => {
         <ColorModeButton />
       </div>
 
-      <SearchInput />
+      <SearchInput searchText={onSearch} />
     </HStack>
   );
 };
