@@ -1,7 +1,7 @@
 import { HStack, Image, Text } from "@chakra-ui/react";
-import logo from "../../assets/logo.webp";
+import logo from "../../assets/logo.png";
 import { ColorModeButton } from "@/components/ui/color-mode";
-import SearchInput from "../searchInput";
+import SearchInput from "../SearchInput";
 
 interface NavbarProps {
   onSearch: (text: string) => void;
